@@ -2,21 +2,21 @@
 struct ServoStruct
 {
   int pin;
-  int turnCounter;
+  int currentPosition;
   int timer;
   int onTime;
   bool on;
   //------------------------------------------------------------
   void turn(int position)
   {
-    bool direction = (position < turnCounter);
-    int onTime = map(abs(position - turnCounter), 0, 1, 0, 480);
-    bool weAreMeantToMove = (millis() - timer < onTime) && (this->turnCounter != turns);
+    bool direction = (position < currentPosition);
+    int onTime = map(abs(position - currentPosition), 0, 1, 0, 480);
+    bool weAreMeantToMove = (millis() - timer < onTime) && (this->currentPosition != position);
     if (weAreMeantToMove)
     {
       if (millis() - timer > onTime)
       {
-        turnCounter += turns;
+        currentPosition += position;
         stop();
       }
       move(direction);
