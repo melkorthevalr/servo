@@ -1,5 +1,6 @@
+
 /*
-   What is this?
+   What is this? ghost proto 
    what does it do?
    whor wrote it?
    wehn?
